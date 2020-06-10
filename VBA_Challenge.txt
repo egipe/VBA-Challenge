@@ -1,0 +1,38 @@
+Sub vba_homework_challenge()
+
+'set last row
+Dim ws As Worksheet
+
+lastrow = ws.Cells(Rows.Count, 9).End(xlUp).Row
+
+Dim greatest_increase As Double
+Dim greatest_decrease As Double
+
+Dim calculated_percentage_change As Double
+Dim calculated_total_volume As Double
+Dim rng As range
+Dim cell As range
+
+range("P1").Value = "Ticker"
+range("Q1").Value = "Value"
+range("O2").Value = "Greatest % Change"
+range("O3").Value = "Greatest % Change"
+range("O4").Value = "Greated Total Volume"
+
+For i = 2 To lastrow
+
+Set rng = Columns(11).EntireColumn
+greatest_increase = Application.WorksheetFunction.Max(rng)
+
+For Each cell In rng
+If cell.Value = greatest_increase Then
+    range("P2").Value = Cells(i, 9).Value
+
+End If
+
+Next cell
+
+Next i
+
+
+End Sub
